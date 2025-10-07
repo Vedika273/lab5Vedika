@@ -104,15 +104,16 @@ public class Lab5Vedika extends Application {
        
          //root
         GridPane root = new GridPane();
-        root.add(select, 0, 5);
-        root.add(vbox, 11, 11);
-        root.add(hboxButtons, 15, 15);
-        root.add(messageLabel, 6,6);
-        root.add(paneButtons, 0,2);
-        
-        //need to fix the layout and make it more clear 
-        
-        
+        root.setPadding(new Insets(20));
+        root.setHgap(15);
+        root.setVgap(15);
+        root.setAlignment(Pos.CENTER);
+
+        root.add(select, 0, 0);
+        root.add(vbox, 1, 0);
+        root.add(paneButtons, 0, 1, 2, 1);
+        root.add(messageLabel, 0, 2, 2, 1);
+        root.add(hboxButtons, 0, 3, 2, 1); //add how much place the nodes will take 
         
         Scene scene = new Scene(root, 500, 500);
         stage.setScene(scene);
