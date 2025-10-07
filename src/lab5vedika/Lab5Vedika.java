@@ -62,11 +62,11 @@ public class Lab5Vedika extends Application {
         //Label largeLabel = new Label("large");
         
         
-        ToggleGroup radioGroup = new ToggleGroup();
+        ToggleGroup sizeGroup = new ToggleGroup();
         Button buttonQuantity = new Button("Button quantity");
-        small.setToggleGroup(radioGroup);
-        medium.setToggleGroup(radioGroup);
-        large.setToggleGroup(radioGroup);
+        small.setToggleGroup(sizeGroup);
+        medium.setToggleGroup(sizeGroup);
+        large.setToggleGroup(sizeGroup);
         
         HBox sizeBox = new HBox(15, small, medium, large);
         sizeBox.setAlignment(Pos.CENTER_LEFT);
@@ -99,6 +99,19 @@ public class Lab5Vedika extends Application {
             String selected = quantityComboBox.getSelectionModel().getSelectedItem(); //get the selected name
             messageLabel.setText(selected); //display the selected name in the label 
             
+        });
+         
+         order.setOnAction(e -> {
+            String selectedBag = bagTypes.getSelectionModel().getSelectedItem();
+            String selectedQuantity = quantityComboBox.getValue();
+            RadioButton selectedSize = (RadioButton) sizeGroup.getSelectedToggle();
+
+            if (selectedBag == null || selectedQuantity == null || selectedSize == null) {
+                messageLabel.setText("Please select a bag style, size, and quantity before ordering.");
+            } else {
+                messageLabel.setText("You ordered " + selectedQuantity + " "
+                        + selectedSize.getText() + " " + selectedBag + " bag(s).");
+            }
         });
        
          //root
