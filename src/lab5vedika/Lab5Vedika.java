@@ -52,9 +52,9 @@ public class Lab5Vedika extends Application {
        
         //RadioButtons  //need to add these buttons too 
         Label sizeLabel = new Label("Select Size : ");
-        RadioButton small = new RadioButton();
-        RadioButton medium = new RadioButton();
-        RadioButton large = new RadioButton();
+        RadioButton small = new RadioButton("Small");
+        RadioButton medium = new RadioButton("Medium");
+        RadioButton large = new RadioButton("Large");
         
          //add the labels for the radioButtons 
         //Label mediumLabel = new Label("medium");                                             
@@ -67,7 +67,16 @@ public class Lab5Vedika extends Application {
         small.setToggleGroup(radioGroup);
         medium.setToggleGroup(radioGroup);
         large.setToggleGroup(radioGroup);
-       
+        
+        HBox sizeBox = new HBox(15, small, medium, large);
+        sizeBox.setAlignment(Pos.CENTER_LEFT);
+        
+        
+        // Group label + buttons into one section with border
+            VBox sizeSection = new VBox(5, sizeLabel, sizeBox);
+            sizeSection.setPadding(new Insets(10));
+            sizeSection.setAlignment(Pos.CENTER_LEFT);
+
         
         //add buttons 
         Button order = new Button("Place order");
@@ -75,11 +84,7 @@ public class Lab5Vedika extends Application {
         
         HBox hboxButtons = new HBox(20, order, clear);
         hboxButtons.setAlignment(Pos.CENTER);
-        
-          
-        //add the size box : 
-        HBox sizeBox = new HBox(15, small, medium, large);
-        sizeBox.setAlignment(Pos.CENTER_LEFT);
+       
         
         
         //labels 
@@ -110,6 +115,7 @@ public class Lab5Vedika extends Application {
         root.add(sizeLabel, 0, 2);
         root.add(sizeBox, 1, 2);
         root.add(hboxButtons, 0, 3, 2, 1);
+        root.add(sizeSection, 1, 2);
         root.add(messageLabel, 0, 4, 2, 1);
         
         Scene scene = new Scene(root, 500, 500);
