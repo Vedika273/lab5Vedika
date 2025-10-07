@@ -6,6 +6,7 @@ package lab5vedika;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -37,7 +38,9 @@ public class Lab5Vedika extends Application {
     @Override
     public void start(Stage stage){
         ListView<String> bagTypes = new ListView<>();
-        bagTypes.getItems().addAll("Full decorative", "Beaded", "Pirate Design", "Fringed", "leather", "plain"); 
+        bagTypes.getItems().addAll("Full decorative", "Beaded", "Pirate Design", "Fringed", "leather", "plain");
+        
+        bagTypes.setPrefHeight(120);
         
         //create comboBox 
         ComboBox<String> quantityComboBox = new ComboBox<>();
@@ -45,8 +48,9 @@ public class Lab5Vedika extends Application {
         VBox vbox = new VBox(bagTypes);
        
         //RadioButtons  //need to add these buttons too 
+        Label sizeLabel = new Label("Select Size : ");
         RadioButton small = new RadioButton();
-         RadioButton medium = new RadioButton();
+        RadioButton medium = new RadioButton();
         RadioButton large = new RadioButton();
         
          //add the labels for the radioButtons 
@@ -72,23 +76,29 @@ public class Lab5Vedika extends Application {
         medium.setToggleGroup(radioGroup);
         large.setToggleGroup(radioGroup);
         
+        //add the size box : 
+        HBox sizeBox = new HBox(15, small, medium, large);
+        sizeBox.setAlignment(Pos.CENTER_LEFT);
+        
         
         //add buttons 
         Button order = new Button("Place order");
         Button clear = new Button("Clear selection");
-        HBox hboxButtons = new HBox(order, clear);
+        
+        HBox hboxButtons = new HBox(20, order, clear);
+        hboxButtons.setAlignment(Pos.CENTER);
         
         //labels 
         Label select = new Label ("Select Bag Style");
         
-        Label selectedNameLabel = new Label();
+        Label messageLabel = new Label();
         
         
         //handle ListView user interaction 
         quantityComboBox.getSelectionModel().selectedItemProperty().addListener(event -> {
             //write event handeling code here 
             String selected = quantityComboBox.getSelectionModel().getSelectedItem(); //get the selected name
-            selectedNameLabel.setText(selected); //display the selected name in the label 
+            messageLabel.setText(selected); //display the selected name in the label 
             
         });
        
@@ -97,7 +107,7 @@ public class Lab5Vedika extends Application {
         root.add(select, 0, 5);
         root.add(vbox, 11, 11);
         root.add(hboxButtons, 15, 15);
-        root.add(selectedNameLabel, 6,6);
+        root.add(messageLabel, 6,6);
         root.add(paneButtons, 0,2);
         
         //need to fix the layout and make it more clear 
