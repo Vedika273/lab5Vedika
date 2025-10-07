@@ -72,7 +72,7 @@ public class Lab5Vedika extends Application {
         sizeBox.setAlignment(Pos.CENTER_LEFT);
         
         
-        // Group label + buttons into one section with border
+        // Group the label + buttons into one section with border
             VBox sizeSection = new VBox(5, sizeLabel, sizeBox);
             sizeSection.setPadding(new Insets(10));
             sizeSection.setAlignment(Pos.CENTER_LEFT);
