@@ -37,12 +37,15 @@ public class Lab5Vedika extends Application {
 
     @Override
     public void start(Stage stage){
+        
+        //the list view of bag types 
         ListView<String> bagTypes = new ListView<>();
         bagTypes.getItems().addAll("Full decorative", "Beaded", "Pirate Design", "Fringed", "leather", "plain");
         
         bagTypes.setPrefHeight(120);
         
-        //create comboBox 
+        //create comboBox fot the quantities 
+        Label quantityLabel = new Label("Select Quantitiy");
         ComboBox<String> quantityComboBox = new ComboBox<>();
         quantityComboBox.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
         VBox vbox = new VBox(bagTypes);
@@ -54,32 +57,17 @@ public class Lab5Vedika extends Application {
         RadioButton large = new RadioButton();
         
          //add the labels for the radioButtons 
-        Label mediumLabel = new Label("medium");                                             
-        Label smallLabel = new Label("small");
-        Label largeLabel = new Label("large");
+        //Label mediumLabel = new Label("medium");                                             
+        //Label smallLabel = new Label("small");
+        //Label largeLabel = new Label("large");
         
-        //add to a gridPane
-        //apply code handeling on this 
-        
-        GridPane paneButtons = new GridPane();
-        paneButtons.add(smallLabel, 0, 0);  //colums //row 
-        paneButtons.add(small, 1, 0);
-        paneButtons.add(mediumLabel, 2,2);
-        //paneButtons.add(medium, 3, 0);
-        //paneButtons.add(largeLabel, 0,9); 
-        //paneButtons.add(large, 0,11);
-      
         
         ToggleGroup radioGroup = new ToggleGroup();
         Button buttonQuantity = new Button("Button quantity");
         small.setToggleGroup(radioGroup);
         medium.setToggleGroup(radioGroup);
         large.setToggleGroup(radioGroup);
-        
-        //add the size box : 
-        HBox sizeBox = new HBox(15, small, medium, large);
-        sizeBox.setAlignment(Pos.CENTER_LEFT);
-        
+       
         
         //add buttons 
         Button order = new Button("Place order");
@@ -88,8 +76,14 @@ public class Lab5Vedika extends Application {
         HBox hboxButtons = new HBox(20, order, clear);
         hboxButtons.setAlignment(Pos.CENTER);
         
+          
+        //add the size box : 
+        HBox sizeBox = new HBox(15, small, medium, large);
+        sizeBox.setAlignment(Pos.CENTER_LEFT);
+        
+        
         //labels 
-        Label select = new Label ("Select Bag Style");
+        Label selectLabel = new Label ("Select Bag Style");
         
         Label messageLabel = new Label();
         
@@ -109,11 +103,14 @@ public class Lab5Vedika extends Application {
         root.setVgap(15);
         root.setAlignment(Pos.CENTER);
 
-        root.add(select, 0, 0);
-        root.add(vbox, 1, 0);
-        root.add(paneButtons, 0, 1, 2, 1);
-        root.add(messageLabel, 0, 2, 2, 1);
-        root.add(hboxButtons, 0, 3, 2, 1); //add how much place the nodes will take 
+        root.add(selectLabel, 0, 0);
+        root.add(bagTypes, 1, 0);
+        root.add(quantityLabel, 0, 1);
+        root.add(quantityComboBox, 1, 1);
+        root.add(sizeLabel, 0, 2);
+        root.add(sizeBox, 1, 2);
+        root.add(hboxButtons, 0, 3, 2, 1);
+        root.add(messageLabel, 0, 4, 2, 1);
         
         Scene scene = new Scene(root, 500, 500);
         stage.setScene(scene);
