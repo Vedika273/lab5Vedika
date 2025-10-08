@@ -120,6 +120,17 @@ public class Lab5Vedika extends Application {
             sizeGroup.selectToggle(null);
             messageLabel.setText("");
         });
+          
+          //added listener for the toggle buttons 
+          sizeGroup.selectedToggleProperty().addListener((observable, oldToggle, newToggle) -> {
+            if (newToggle != null) {
+                RadioButton selected = (RadioButton) newToggle;
+                messageLabel.setText("Selected size: " + selected.getText());
+            } else {
+                messageLabel.setText("");
+            }
+        });
+
        
          //root
         GridPane root = new GridPane();
@@ -132,11 +143,10 @@ public class Lab5Vedika extends Application {
         root.add(bagTypes, 1, 0);
         root.add(quantityLabel, 0, 1);
         root.add(quantityComboBox, 1, 1);
-        root.add(sizeLabel, 0, 2);
-        root.add(sizeBox, 1, 2);
         root.add(hboxButtons, 0, 3, 2, 1);
-        root.add(sizeSection, 1, 2);
         root.add(messageLabel, 0, 4, 2, 1);
+        root.add(sizeSection, 0,2,2,1);
+       
         
         Scene scene = new Scene(root, 500, 500);
         stage.setScene(scene);
