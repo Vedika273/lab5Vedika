@@ -2,6 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
+
+//https://github.com/Vedika273/lab5Vedika
+
 package lab5vedika;
 
 import javafx.application.Application;
@@ -21,7 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- * https://github.com/Vedika273/lab5Vedika
+ * 
  * @author 6303129
  */
 public class Lab5Vedika extends Application {
@@ -86,9 +89,9 @@ public class Lab5Vedika extends Application {
         //handle ListView user interaction 
         quantityComboBox.getSelectionModel().selectedItemProperty().addListener(event -> {
             String selected = quantityComboBox.getSelectionModel().getSelectedItem(); //get the selected name
-            messageLabel.setText(selected); //display the selected name in the label 
-            
+            messageLabel.setText(selected); //display the selected name in the label   
         });
+        
          ///event handler for the order button 
          order.setOnAction(e -> {
             String selectedBag = bagTypes.getSelectionModel().getSelectedItem();
@@ -140,6 +143,4 @@ public class Lab5Vedika extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
 }
-
