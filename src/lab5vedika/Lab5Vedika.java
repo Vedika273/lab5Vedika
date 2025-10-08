@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.BorderPane;  
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -100,7 +100,7 @@ public class Lab5Vedika extends Application {
             messageLabel.setText(selected); //display the selected name in the label 
             
         });
-         
+         ///event handler for the order button 
          order.setOnAction(e -> {
             String selectedBag = bagTypes.getSelectionModel().getSelectedItem();
             String selectedQuantity = quantityComboBox.getValue();
@@ -112,6 +112,13 @@ public class Lab5Vedika extends Application {
                 messageLabel.setText("You ordered " + selectedQuantity + " "
                         + selectedSize.getText() + " " + selectedBag + " bag(s).");
             }
+        });
+         
+          clear.setOnAction(e -> {
+            bagTypes.getSelectionModel().clearSelection();
+            quantityComboBox.getSelectionModel().clearSelection();
+            sizeGroup.selectToggle(null);
+            messageLabel.setText("");
         });
        
          //root
