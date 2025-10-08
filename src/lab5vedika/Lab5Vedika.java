@@ -33,7 +33,7 @@ public class Lab5Vedika extends Application {
        launch(args);
     }
     
-    //create a gridPane which is the root 
+    //root : gridPane
 
     @Override
     public void start(Stage stage){
@@ -56,11 +56,6 @@ public class Lab5Vedika extends Application {
         RadioButton medium = new RadioButton("Medium");
         RadioButton large = new RadioButton("Large");
         
-         //add the labels for the radioButtons 
-        //Label mediumLabel = new Label("medium");                                             
-        //Label smallLabel = new Label("small");
-        //Label largeLabel = new Label("large");
-        
         
         ToggleGroup sizeGroup = new ToggleGroup();
         Button buttonQuantity = new Button("Button quantity");
@@ -71,13 +66,11 @@ public class Lab5Vedika extends Application {
         HBox sizeBox = new HBox(15, small, medium, large);
         sizeBox.setAlignment(Pos.CENTER_LEFT);
         
-        
         // Group the label + buttons into one section with border
-            VBox sizeSection = new VBox(5, sizeLabel, sizeBox);
-            sizeSection.setPadding(new Insets(10));
-            sizeSection.setAlignment(Pos.CENTER_LEFT);
+        VBox sizeSection = new VBox(5, sizeLabel, sizeBox);
+        sizeSection.setPadding(new Insets(10));
+        sizeSection.setAlignment(Pos.CENTER_LEFT);
 
-        
         //add buttons 
         Button order = new Button("Place order");
         Button clear = new Button("Clear selection");
@@ -85,17 +78,13 @@ public class Lab5Vedika extends Application {
         HBox hboxButtons = new HBox(20, order, clear);
         hboxButtons.setAlignment(Pos.CENTER);
        
-        
-        
         //labels 
         Label selectLabel = new Label ("Select Bag Style");
-        
         Label messageLabel = new Label();
         
         
         //handle ListView user interaction 
         quantityComboBox.getSelectionModel().selectedItemProperty().addListener(event -> {
-            //write event handeling code here 
             String selected = quantityComboBox.getSelectionModel().getSelectedItem(); //get the selected name
             messageLabel.setText(selected); //display the selected name in the label 
             
@@ -130,8 +119,7 @@ public class Lab5Vedika extends Application {
                 messageLabel.setText("");
             }
         });
-
-       
+          
          //root
         GridPane root = new GridPane();
         root.setPadding(new Insets(20));
@@ -146,9 +134,9 @@ public class Lab5Vedika extends Application {
         root.add(hboxButtons, 0, 3, 2, 1);
         root.add(messageLabel, 0, 4, 2, 1);
         root.add(sizeSection, 0,2,2,1);
-       
-        
+      
         Scene scene = new Scene(root, 500, 500);
+        stage.setTitle("Bag ordering Form");
         stage.setScene(scene);
         stage.show();
     }
